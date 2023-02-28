@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <title>Add User</title>
+</head>
+<header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top " style="height:80px">
+    <div class="container-fluid">
+        <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="#">
+            User Management App</a>
+    </div>
+</nav>
+</header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<body style="background-color: rgb(255,255,255)">
+<div  class="container" style="height: 670px; width: 900px; background-color: #d9d9d9; border-radius: 20px">
+<div class="container w-50">
+<br>
+    <h3 class="text-center" style="font-family: Calibri">Update current User</h3>
+<br>
+<form method="post">
+    {{ form.csrf_token }}
+    <label for="name" class="form-label">Name:</label>
+    {{ form.name(class="form-control", value=user_to_update.name) }}
+    <br>
+    <label for="surname" class="form-label">Surname:</label>
+    {{ form.surname(class="form-control", value=user_to_update.surname) }}
+    <br>
+    <label for="email" class="form-label">Email:</label>
+    {{ form.email(class="form-control", value=user_to_update.email) }}
+    <br>
+    <label for="permissions" class="form-label">Permissions:</label>
+    <br>
+    <input type="checkbox" name="permissions" value="Read"
+                  {% if 'Read' in list_perm %}
+                        checked
+                  {% endif %} > Read
+    <br>
+    <input type="checkbox" name="permissions" value="Write"
+                   {% if 'Write' in list_perm %}
+                        checked
+                  {% endif %} > Write
+    <br>
+    <input type="checkbox" name="permissions" value="Delete"
+                    {% if 'Delete' in list_perm %}
+                        checked
+                  {% endif %} > Delete
+    <br>
+    <br>
+    <button class="btn btn-success btn-block" type="submit">Update User</button>
+</form>
+</div>
+</div>
+</body>
+<br>
+<footer class="footer bg-dark" style="height: 130px">
+    <br>
+    <br>
+        <h6 class="text-muted" style="color:white;font-size: 13px; text-align:center;">
+            <hr style="border: 1px solid rgba(255,255,255,0.07)">
+            © 2022 User Management App | All Rights Reserved
+        </h6>
+</footer>
+</html>
